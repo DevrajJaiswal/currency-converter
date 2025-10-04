@@ -4,10 +4,10 @@ import InputBox from './components'
 import './App.css'
 
 function App() {
-  const [amount, setAmount] = useState(0.00)
+  const [amount, setAmount] = useState("")
   const [from, setFrom] = useState('inr')
   const [to, setTo] = useState('usd')
-  const [convertedAmount, setConvertedAmount] = useState(0.00)
+  const [convertedAmount, setConvertedAmount] = useState("")
 
   // Custom Currency hook
   const [currencyInfo, setCurrencyInfo] = useCurrencyInfo(from)
@@ -34,7 +34,7 @@ function App() {
         }}
       >
         <div className="w-full">
-          <h2 className="wrapper mb-4 text-2xl font-bold">Currency Converter</h2>
+          <h2 className="mb-4 text-2xl font-bold">Currency Converter</h2>
 
           <div className="w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 backdrop-blur-sm bg-white/30">
             <form
@@ -76,12 +76,12 @@ function App() {
                   onCurrencyChange={function (currency) {
                     return setTo(currency)
                   }}
-                  selectCurrency={from}
+                  selectCurrency={to}
                   amountDisable
                 />
               </div>
               <button type="submit" className="w-full bg-blue-600 text-black px-4 py-3 rounded-lg">
-                Convert  {from.toUpperCase()} to {to.toUpperCase()}
+                {amount ? `Convert ${from.toUpperCase()} to ${to.toUpperCase()}` : "Convert"}
               </button>
             </form>
           </div>

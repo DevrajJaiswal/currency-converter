@@ -28,7 +28,8 @@ function InputBox({
           value={amount}
           onChange={
             function (e) {
-              return onAmountChange && onAmountChange(Number(e.target.value))
+              const value = e.target.value;
+              onAmountChange && onAmountChange(value === "" ? "" : Number(value));
             }}
         />
       </div>
